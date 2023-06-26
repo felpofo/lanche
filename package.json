@@ -9,8 +9,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "supabase": "supabase start; yarn supabase:gen",
-    "supabase:gen": "supabase gen types typescript --local > src/lib/database.d.ts",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
@@ -21,20 +19,25 @@
   "devDependencies": {
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.20.4",
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.28.0",
     "eslint-plugin-editorconfig": "^4.0.3",
     "eslint-plugin-svelte": "^2.30.0",
+    "sass": "^1.63.6",
     "supabase": "^1.68.6",
     "svelte": "^4.0.0",
+    "svelte-add": "^2023.6.25-0.0",
     "svelte-check": "^3.4.3",
     "tslib": "^2.4.1",
     "typescript": "^5.0.0",
     "vite": "^4.3.6"
   },
   "dependencies": {
+    "@picocss/pico": "^1.5.10",
     "@supabase/auth-helpers-sveltekit": "^0.10.1",
-    "@supabase/supabase-js": "^2.26.0"
+    "@supabase/supabase-js": "^2.26.0",
+    "phosphor-svelte": "^1.3.0"
   }
 }
