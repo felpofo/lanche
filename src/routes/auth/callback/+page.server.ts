@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 
-export async function GET({ url, locals: { supabase } }) {
+export const load = async ({ url, locals: { supabase } }) => {
   const code = url.searchParams.get("code");
 
   if (code) await supabase.auth.exchangeCodeForSession(code);
