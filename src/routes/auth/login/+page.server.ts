@@ -14,5 +14,5 @@ export const load = async ({ url, locals: { supabase } }) => {
         success: false,
       });
 
-    throw redirect(301, data.url);
+    throw redirect(303, data.url);
   }

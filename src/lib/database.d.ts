@@ -34,13 +34,65 @@ export interface Database {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      breakfasts: {
+        Row: {
+          date: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          date?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          date?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "breakfasts_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      lunches: {
+        Row: {
+          date: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          date?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          date?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lunches_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      deleteUser: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
@@ -235,3 +287,4 @@ export interface Database {
     }
   }
 }
+

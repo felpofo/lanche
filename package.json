@@ -9,6 +9,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "supabase:gen": "supabase gen types typescript --local 1> src/lib/database.d.ts",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",

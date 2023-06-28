@@ -1,40 +1,53 @@
 <script lang="ts">
+  import { page } from "$app/stores";
+
   import Login from "$lib/components/Login.svelte";
-  import Mainpage from "$lib/components/Mainpage.svelte";
   import UserCard from "$lib/components/UserCard.svelte";
 
-  export let data;
+  const wantsBreakfast: boolean = !!$page.data.wantsBreakfast;
+  const wantsLunch: boolean = !!$page.data.wantsLunch;
 </script>
 
 <main>
   <section>
-    {#if data.session}
-      {@const user = data.session.user.user_metadata}
-      <UserCard {user} />
-      <Mainpage />
+    {#if $page.data.session}
+      <h1>Eu vou querer</h1>
+      <div>
+        <form method="post">
+          <fieldset>
+            <label for="breakfast">
+              <input type="checkbox" id="breakfast" name="breakfast" checked={wantsBreakfast} disabled={wantsBreakfast}/>
+              Lanche
+            </label>
+            <label for="lunch">
+              <input type="checkbox" id="lunch" name="lunch" checked={wantsLunch} disabled={wantsLunch}/>
+              Almoço
+            </label>
+          </fieldset>
+          <button type="submit" disabled={wantsBreakfast && wantsLunch}>Dale</button>
+        </form>
+      </div>
+      <UserCard user={$page.data.session.user.user_metadata} />
     {:else}
       <Login />
     {/if}
   </section>
-  <a href="/auth/logout">Logout</a>
-  <a href="/admin">Admin</a>
 </main>
 
 <style lang="scss">
-  :global(html, body), main {
+  :global(html, body),
+  main {
     height: 100%;
   }
 
-  main {
+  section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-  }
+    justify-content: space-between;
 
-  section {
-    display: grid;
-    place-items: center;
-    justify-content: center;
+    height: 100%;
+    padding: 1rem 0;
+    margin: 0;
   }
 </style>

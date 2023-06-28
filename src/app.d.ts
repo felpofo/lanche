@@ -6,11 +6,11 @@ import type { Database } from "$lib/database";
 declare global {
   namespace App {
     interface Locals {
-      supabase: SupabaseClient<Database>,
-      async getSession(): Promise<Session | null>
+      supabase: SupabaseClient<Database>;
+      async getSession(): Promise<Session | null>;
     }
     interface PageData {
-      session: Session | null
+      session: Session | null;
     }
     // interface Error {}
     // interface Platform {}

@@ -4,7 +4,7 @@
   export let user: Record<string, any>;
 </script>
 
-<article class="card">
+<article>
   <div class="avatar">
     <img class="icon" src={user.avatar_url} alt={user.name[0]} />
     <a class="signout" href="/auth/logout">
@@ -18,52 +18,59 @@
 </article>
 
 <style lang="scss">
-  .card {
+  article {
     display: flex;
     align-items: center;
 
     gap: 1rem;
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1.15rem;
+    margin: 0;
 
     transition: filter 125ms ease-in-out;
   }
 
   .avatar {
-      position: relative;
+    position: relative;
 
-      cursor: pointer;
-      text-decoration: none;
+    cursor: pointer;
+    text-decoration: none;
 
+    .icon {
+      border-radius: 0.375rem;
+
+      transition: filter 125ms ease-in-out;
+    }
+
+    .signout {
+      position: absolute;
+      opacity: 0;
+
+      top: 0;
+      left: -1.5%; // visual fix; no impact on responsiviness
+
+      width: 100%;
+      height: 100%;
+
+      display: grid;
+      place-items: center;
+
+      color: var(--contrast);
+      mix-blend-mode: overlay;
+
+      transition: opacity 125ms ease-in-out;
+    }
+
+
+    &:hover, &:active, &:focus {
       .signout {
-        position: absolute;
-        opacity: 0;
-
-        top: 0;
-        left: -1.5%; // visual fix; no impact on responsiviness
-
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        color: var(--contrast);
-        mix-blend-mode: overlay;
-
-        transition: opacity 125ms ease-in-out;
+        opacity: 1;
       }
 
-      &:hover, &:active, &:focus {
-        .signout {
-          opacity: 1;
-        }
-
-        .icon {
-          filter: blur(0.25rem) grayscale(1/2);
-        }
+      .icon {
+        filter: blur(0.15rem) grayscale(0.5);
       }
     }
+  }
 
   .text {
     display: flex;
